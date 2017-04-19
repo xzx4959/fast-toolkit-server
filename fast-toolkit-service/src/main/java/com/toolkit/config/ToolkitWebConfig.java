@@ -19,10 +19,10 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @EnableWebMvc
 @ComponentScan("com.toolkit.web") //扫描com.toolkit.web包下带有@Controller注解的组件作为候选bean
-public class ToolkitWebConfig extends WebMvcConfigurerAdapter{
+public class ToolkitWebConfig extends WebMvcConfigurerAdapter {
     //配置html视图解析器
     @Bean
-    public ViewResolver viewResolver(){
+    public ViewResolver viewResolver() {
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
         resolver.setPrefix("/WEB-INF/views");
         resolver.setSuffix(".html");

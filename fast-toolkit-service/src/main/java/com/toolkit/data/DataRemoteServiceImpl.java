@@ -13,14 +13,14 @@ import java.io.InputStream;
  * @version 1.0
  * @date 创建时间 ：2017/4/15 19:01
  */
-public class DataRemoteServiceImpl implements DataRemoteService{
+public class DataRemoteServiceImpl implements DataRemoteService {
 
     public String uploadFile() {
 
         return null;
     }
 
-    public boolean insertData(String fileName,String targetTable) throws FileNotFoundException {
+    public boolean insertData(String fileName, String targetTable) throws FileNotFoundException {
 
         InputStream inputStream = new FileInputStream(fileName);
         return false;
