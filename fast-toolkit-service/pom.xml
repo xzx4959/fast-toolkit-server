@@ -14,7 +14,7 @@
     <name>fast-toolkit-service</name>
     <version>${project.version.service}</version>
     <packaging>war</packaging>
-    
+
     <dependencies>
 
         <dependency>
