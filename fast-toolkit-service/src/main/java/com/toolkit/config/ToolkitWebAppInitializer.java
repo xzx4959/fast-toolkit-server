@@ -16,6 +16,7 @@ public class ToolkitWebAppInitializer extends AbstractAnnotationConfigDispatcher
 
     /**
      * 指定配置类
+     *
      * @return
      */
     protected Class<?>[] getServletConfigClasses() {
@@ -24,9 +25,19 @@ public class ToolkitWebAppInitializer extends AbstractAnnotationConfigDispatcher
 
     /**
      * 将DispatcherServlet映射到"/"
+     *
      * @return
      */
     protected String[] getServletMappings() {
         return new String[]{"/"};
+    }
+
+    /**
+     * 处理文件上传，设置默认的上传目录
+     * @param registration
+     */
+    @Override
+    protected void customizeRegistration(ServletRegistration.Dynamic registration) {
+        registration.setMultipartConfig(new MultipartConfigElement("/upload_file"));
     }
 }
