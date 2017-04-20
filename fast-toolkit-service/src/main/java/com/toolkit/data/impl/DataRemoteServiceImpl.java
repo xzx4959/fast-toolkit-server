@@ -1,4 +1,4 @@
-package com.toolkit.data;
+package com.toolkit.data.impl;
 
 import com.toolkit.api.data.DataRemoteService;
 

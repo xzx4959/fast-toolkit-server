@@ -14,7 +14,7 @@
     <name>fast-toolkit-service</name>
     <version>${project.version.service}</version>
     <packaging>war</packaging>
-    
+
     <dependencies>
 
         <dependency>
@@ -58,6 +58,11 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -110,6 +115,11 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>19.0</version>
+        </dependency>
+        <!--腾讯云-->
+        <dependency>
+            <groupId>com.qcloud</groupId>
+            <artifactId>cos_api</artifactId>
         </dependency>
     </dependencies>
 </project>
