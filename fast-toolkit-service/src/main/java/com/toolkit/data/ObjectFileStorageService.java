@@ -5,7 +5,7 @@ package com.toolkit.data;
  * 文件对象存储
  */
 public interface ObjectFileStorageService {
-    boolean uploadFile2Cloud();
+    boolean uploadFile2Cloud(String path);
     boolean downloadFile2Local();
     boolean deleteFileOnCloud();
 }
