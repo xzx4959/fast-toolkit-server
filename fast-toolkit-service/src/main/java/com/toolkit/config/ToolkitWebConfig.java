@@ -3,11 +3,15 @@ package com.toolkit.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+import java.io.IOException;
 
 /**
  * <p></p>
@@ -35,5 +39,9 @@ public class ToolkitWebConfig extends WebMvcConfigurerAdapter {
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         //对静态资源的处理转发到Servlet容器中默认的servlet上而不使用DispatcherServlet本身来进行处理
         configurer.enable();
+    }
+    @Bean
+    public MultipartResolver multipartResolver() throws IOException{
+        return new StandardServletMultipartResolver();
     }
 }

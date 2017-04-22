@@ -21,6 +21,10 @@
             <groupId>com.jason.toolkit</groupId>
             <artifactId>fast-toolkit-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+        </dependency>
         <!--Spring-->
         <dependency>
             <groupId>org.springframework</groupId>
