@@ -9,6 +9,6 @@ package com.toolkit.utils;
  */
 public class JsonUtils<T> {
     public String json2Object(T t){
-
+        return null;
     }
 }
