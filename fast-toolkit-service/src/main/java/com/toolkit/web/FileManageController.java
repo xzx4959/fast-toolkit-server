@@ -27,13 +27,13 @@ public class FileManageController {
     private Logger logger = LoggerFactory.getLogger(FileManageController.class);
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    public @ResponseBody ToolkitResponseBody processFileUpload(@RequestPart("file") MultipartFile multipartFile) {
+    public @ResponseBody ToolkitResponseBody processFileUpload(@RequestPart("fileName") MultipartFile multipartFile) {
         if (multipartFile.isEmpty()) {
             logger.error("file data is empty");
             return new ToolkitResponseBody(ResponseMessageEnum.FILE_UPLOAD_EMPTY.getMessage());
         }
         try {
-            multipartFile.transferTo(new File("/upload_file/" + multipartFile.getName()));
+            multipartFile.transferTo(new File(multipartFile.getName()));
         } catch (IOException e) {
             logger.info("upload file has exception:", e);
             e.printStackTrace();

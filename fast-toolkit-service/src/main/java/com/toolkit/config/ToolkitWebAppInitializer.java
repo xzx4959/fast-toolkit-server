@@ -4,6 +4,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 import javax.servlet.MultipartConfigElement;
 import javax.servlet.ServletRegistration;
+import javax.servlet.annotation.MultipartConfig;
 
 /**
  * <p>配置DispatcherServlet</p>
@@ -41,6 +42,6 @@ public class ToolkitWebAppInitializer extends AbstractAnnotationConfigDispatcher
      */
     @Override
     protected void customizeRegistration(ServletRegistration.Dynamic registration) {
-        registration.setMultipartConfig(new MultipartConfigElement("/upload_file"));
+        registration.setMultipartConfig(new MultipartConfigElement("upload_file"));
     }
 }

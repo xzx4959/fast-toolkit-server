@@ -13,7 +13,7 @@
 <body>
      <form action="/file/upload" method="post" enctype="multipart/form-data">
 
-         <input type="file" id="fileName" name="tableName"/>
+         <input type="file" id="fileName" name="fileName"/>
          <input type="text" id="tableName" name="tableName"/>
          <input type="submit" value="提交">
      </form>
