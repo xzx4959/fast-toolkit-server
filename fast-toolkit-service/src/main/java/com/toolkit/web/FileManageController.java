@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 
 /**
  * <p>文件管理控制器：包括文件的上传和下载</p>
@@ -33,7 +34,8 @@ public class FileManageController {
             return new ToolkitResponseBody(ResponseMessageEnum.FILE_UPLOAD_EMPTY.getMessage());
         }
         try {
-            multipartFile.transferTo(new File(multipartFile.getName()));
+            String fileName = "E://toolkit_file//"+String.valueOf(new Date().getTime())+"_"+multipartFile.getOriginalFilename();
+            multipartFile.transferTo(new File(fileName));
         } catch (IOException e) {
             logger.info("upload file has exception:", e);
             e.printStackTrace();

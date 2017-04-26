@@ -1,7 +1,9 @@
 package com.toolkit.config;
 
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+import javax.servlet.Filter;
 import javax.servlet.MultipartConfigElement;
 import javax.servlet.ServletRegistration;
 import javax.servlet.annotation.MultipartConfig;
@@ -38,10 +40,19 @@ public class ToolkitWebAppInitializer extends AbstractAnnotationConfigDispatcher
 
     /**
      * 处理文件上传，设置默认的上传目录
+     *
      * @param registration
      */
     @Override
     protected void customizeRegistration(ServletRegistration.Dynamic registration) {
-        registration.setMultipartConfig(new MultipartConfigElement("upload_file"));
+        registration.setMultipartConfig(new MultipartConfigElement(""));
+    }
+
+    @Override
+    protected Filter[] getServletFilters() {
+        CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
+        characterEncodingFilter.setEncoding("UTF-8");
+        characterEncodingFilter.setForceEncoding(true);
+        return new Filter[]{characterEncodingFilter};
     }
 }
