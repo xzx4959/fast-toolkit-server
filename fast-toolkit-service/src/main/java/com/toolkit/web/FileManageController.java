@@ -2,8 +2,11 @@ package com.toolkit.web;
 
 import com.toolkit.api.enums.ResponseMessageEnum;
 import com.toolkit.api.vo.ToolkitResponseBody;
+import com.toolkit.data.DataRemoteService;
+import com.toolkit.data.ObjectFileStorageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,16 +29,27 @@ import java.util.Date;
 @RequestMapping("/file")
 public class FileManageController {
     private Logger logger = LoggerFactory.getLogger(FileManageController.class);
-
+    private static final String localPathPrefix = "E://toolkit_file//";
+    @Autowired
+    private ObjectFileStorageService objectFileStorageService;
+    @Autowired
+    private DataRemoteService dataRemoteService;
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    public @ResponseBody ToolkitResponseBody processFileUpload(@RequestPart("fileName") MultipartFile multipartFile) {
-        if (multipartFile.isEmpty()) {
-            logger.error("file data is empty");
+    public
+    @ResponseBody
+    ToolkitResponseBody processFileUpload(@RequestPart("fileName") MultipartFile multipartFile, String tableName) {
+        if (multipartFile.isEmpty() || tableName == null) {
+            logger.error("file data or tableName is empty");
             return new ToolkitResponseBody(ResponseMessageEnum.FILE_UPLOAD_EMPTY.getMessage());
         }
         try {
-            String fileName = "E://toolkit_file//"+String.valueOf(new Date().getTime())+"_"+multipartFile.getOriginalFilename();
-            multipartFile.transferTo(new File(fileName));
+            String fileName = String.valueOf(new Date().getTime()) + "_" + multipartFile.getOriginalFilename();
+            String filePath = localPathPrefix + fileName;
+            multipartFile.transferTo(new File(filePath));
+            boolean uploadFileFlag = objectFileStorageService.uploadFile2Cloud(fileName);
+            if (uploadFileFlag) {
+                dataRemoteService.insertData(fileName,tableName);
+            }
         } catch (IOException e) {
             logger.info("upload file has exception:", e);
             e.printStackTrace();

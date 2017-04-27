@@ -12,7 +12,5 @@ import java.io.InputStream;
  * @date 创建时间 ：2017/4/20 21:29
  */
 public interface DataRemoteService {
-    public String uploadFile() ;
-
-    public boolean insertData(String fileName, String targetTable) throws FileNotFoundException;
+    boolean insertData(String fileName, String targetTable) throws FileNotFoundException;
 }

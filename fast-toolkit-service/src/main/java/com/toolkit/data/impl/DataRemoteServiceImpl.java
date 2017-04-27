@@ -14,15 +14,11 @@ import java.io.InputStream;
  * @date 创建时间 ：2017/4/15 19:01
  */
 public class DataRemoteServiceImpl implements DataRemoteService {
-
-    public String uploadFile() {
-
-        return null;
-    }
-
+    private static final String localPathPrefix = "E://toolkit_file//";
     public boolean insertData(String fileName, String targetTable) throws FileNotFoundException {
-
+        String filePath = localPathPrefix + fileName;
         InputStream inputStream = new FileInputStream(fileName);
+
         return false;
     }
 }
